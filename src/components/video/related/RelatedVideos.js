@@ -3,8 +3,8 @@ import RelatedVideo from "./RelatedVideo";
 
 export default function RelatedVideos({ id, title }) {
   const { data, isError, isLoading, error } = useGetRelatedVideoQuery({
-    videoId: id,
-    title: title,
+    id,
+    title,
   });
   let content = null;
   if (isLoading) content = <p>Loading...</p>;
