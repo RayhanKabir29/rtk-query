@@ -6,7 +6,7 @@ import Success from "../ui/Success";
 import Error from "../ui/Error";
 
 export default function Form({ video }) {
-  const [editVideo, { data, isLoading, isSuccess, isError }] =
+  const [editVideo, { data:editVideoData, isLoading, isSuccess, isError }] =
     useEditVideoMutation();
   const {
     id,
