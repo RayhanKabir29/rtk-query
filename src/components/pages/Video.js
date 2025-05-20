@@ -28,8 +28,7 @@ export default function Video() {
           <div className="col-span-full w-full space-y-8 lg:col-span-2">
             {content}
           </div>
-
-          <RelatedVideos />
+          {data?.id && <RelatedVideos id={data.id} title={data.title} />}
         </div>
       </div>
     </section>
