@@ -1,42 +1,42 @@
-import Success from "../ui/Success";
-import Error from "../ui/Error";
 import { useState } from "react";
 import { useAddVideoMutation } from "../../features/api/apiSlice";
+import Error from "../ui/Error";
+import Success from "../ui/Success";
 import TextArea from "../ui/TextArea";
 import TextInput from "../ui/TextInput";
 
 export default function Form() {
-  const [addVideo, { data: video, isError, isLoading, isSuccess }] =
-    useAddVideoMutation();
+  const [addVideo, { isLoading, isSuccess, isError }] = useAddVideoMutation();
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [thumbnail, setThumbnail] = useState("");
-  const [uploadDate, setUploadDate] = useState("");
+  const [date, setDate] = useState("");
   const [duration, setDuration] = useState("");
   const [views, setViews] = useState("");
 
   const resetForm = () => {
     setTitle("");
-    setAuthor("");
     setDescription("");
+    setAuthor("");
     setLink("");
     setThumbnail("");
-    setUploadDate("");
+    setDate("");
     setDuration("");
     setViews("");
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addVideo({
       title,
-      author,
       description,
+      author,
       link,
       thumbnail,
-      uploadDate,
+      date,
       duration,
       views,
     });
@@ -50,7 +50,7 @@ export default function Form() {
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-3">
               <TextInput
-                title="Video Title"
+                title="Video title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -91,8 +91,8 @@ export default function Form() {
             <div className="col-span-6 sm:col-span-6 lg:col-span-2">
               <TextInput
                 title="Upload Date"
-                value={uploadDate}
-                onChange={(e) => setUploadDate(e.target.value)}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
               />
             </div>
 
@@ -124,7 +124,7 @@ export default function Form() {
         </div>
 
         {isSuccess && <Success message="Video was added successfully" />}
-        {isError && <Error message="Failed to add video" />}
+        {isError && <Error message="There was an error adding video!" />}
       </div>
     </form>
   );

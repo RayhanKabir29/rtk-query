@@ -1,8 +1,8 @@
-import { useGetRelatedVideoQuery } from "../../../features/api/apiSlice";
+import { useGetRelatedVideosQuery } from "../../../features/api/apiSlice";
 import RelatedVideo from "./RelatedVideo";
 
 export default function RelatedVideos({ id, title }) {
-  const { data, isError, isLoading, error } = useGetRelatedVideoQuery({
+  const { data, isError, isLoading, error } = useGetRelatedVideosQuery({
     id,
     title,
   });
