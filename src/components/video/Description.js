@@ -18,9 +18,6 @@ const navigate = useNavigate();
     if (isSuccess) {
       navigate("/")
     }
-    if (isError) {
-      console.log("Error deleting video");
-    }
   },[isSuccess,navigate])
   return (
     <div>
